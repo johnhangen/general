@@ -1,8 +1,8 @@
 # Selection sort
 #
-# 5/1/2021
+# 5/11/2021
 # @author Jack Hangen
-# Incomplete
+# Complete
 # Comparing big O of section to actual
 
 import numpy as np
