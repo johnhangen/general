@@ -2,7 +2,7 @@
 #
 # 5/14/2021
 # @author Jack Hangen
-# Incomplete
+# Complete
 # hard coded implimentation of tik tak toe
 import random
 
