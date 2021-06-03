@@ -7,6 +7,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+from numpy.core.fromnumeric import partition
 
 # bubble Sort Method
 def bubbleSort(arr):
@@ -83,9 +84,9 @@ def selection_Sort(array):
         current_item += 1
     return comp
 
-size = [10, 30, 50, 70, 100, 300, 500, 700, 1000, 3000, 5000, 7000, 10000]
-temp_array = [10 * 10, 30 * 30, 50 *50, 70 * 70, 100 * 100, 300 * 300, 500 *500, 700 * 700, 1000 * 1000, 3000 * 3000, 5000 *5000, 7000 * 7000, 10000 * 10000]
 
+
+size = [10, 30, 50, 70, 100, 300, 500, 700, 1000, 3000, 5000, 7000, 10000]
 # runs the selection sort method for everything in the array size and stores it in comps
 
 mcomps = []
@@ -117,10 +118,10 @@ for i in size:
     scomps.append(comp)
 
 # Uses matplotlib to plot the algorithm efficiency
-plt.plot(size, mcomps, 'r--', size, bcomps, 'b--', size, icomps, 'g--', size, scomps, 'y--')
+plt.plot(size, mcomps, 'r--', size, bcomps, 'b--', size, icomps, 'g--', size, scomps, 'y--', size)
 plt.ylabel("Number of comparisons")
 plt.xlabel("Size of array")
-plt.title('Insertion Sort Comparisons vs Big O')
-plt.text(1000, 90000000, "red = Insertion, blue = big O")
+plt.title('All Sorting Methods')
+plt.text(1000, 90000000, "Merge sort = Red, Bubble sort = Blue, Insertion sort = Green, Selection sort = Yellow")
 plt.axis([0, 10000,0,100000000])
 plt.show()   
