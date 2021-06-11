@@ -9,6 +9,7 @@
 import tkinter
 import random
 import time
+from tkinter.constants import END
 
 # var
 board = [['-','-','-'],['-','-','-'],['-','-','-']]
@@ -19,6 +20,18 @@ places2 = [1,2,3,4,5,6,7,8,9]
 # create instance
 window = tkinter.Tk()
 window.title("Tik Tak Toe")
+
+def print_board(board):
+  for i in board:
+    print(i)
+
+def print_pos(places):
+  for i in places:
+    print(i)
+
+def print_pos_set(places_set):
+  for i in places_set:
+    print(i)
 
 def player_move(pos):
   if (pos == 1 or pos == 2 or pos == 3):
@@ -53,26 +66,26 @@ def player_move(pos):
 def computer_move():
     pick = random.randrange(1, 9, 1)
     if (pick == 1 or pick == 2 or pick == 3):
-      if(board[0][pick - 1] == '-' and places[0][pick - 1] != None):
+      if(places[0][pick - 1] != None):
         places[0][pick - 1] = None
         board[0][pick - 1] = 'X'
         return pick
       else:
-        computer_move()
+        return computer_move()
     elif (pick == 4 or pick == 5 or pick == 6):
-      if(board[1][pick - 4] == '-' and places[1][pick - 4] != None):
+      if(places[1][pick - 4] != None):
         places[1][pick - 4] = None
         board[1][pick - 4] = 'X'
         return pick
       else:
-        computer_move()
+        return computer_move()
     elif (pick == 7 or pick == 8 or pick == 9):
-      if(board[2][pick - 7] == '-' and places[2][pick - 7] != None):
+      if(places[2][pick - 7] != None):
         places[2][pick - 7] = None
         board[2][pick - 7] = 'X'
         return pick
       else:
-        computer_move()
+        return computer_move()
 
 
 # game over funtion: tells if the game is over
@@ -145,7 +158,7 @@ def convert(num):
     elif(num == "9"):
         return 9
     else:
-        print("I have no fucking clue now")
+        print("ERROR: 152")
 
 count1 = 0
 count = 0
@@ -153,29 +166,29 @@ count = 0
 # click
 def click():
     output = num.get()
+    num.delete(0, END)
     try:
+        # I got lazy sorry :/
         global count
         global count1
-        if (game_over == True):
-            time.sleep(5)
-            window.destroy()
-            exit()
-        output = convert(output)
-        while (player_move(output) == True):
-            print(xs[count])
-            placeWigget(output, xs[count])
-        count = count + 1
-        if (game_over == True):
-            time.sleep(5)
-            window.destroy()
-            exit()
-        else:
+
+        # person part
+        game = game_over()
+        if (game == False):
+            output = convert(output)
+            player_move(output)
+            placeWigget(output, os[count])
+            count = count + 1
+
+        # computer part
+        game = game_over()
+        if (game == False):
             compMove = computer_move()
             print(compMove)
-            placeWigget(compMove, os[count1])
+            placeWigget(compMove, xs[count1])
             count1 = count1 + 1
     except:
-        print("I dont fucking know 168")
+        print("ERROR: 168")
         time.sleep(5)
         window.destroy()
         exit()
@@ -327,43 +340,43 @@ def placeWigget(nums, wigget):
         )
     elif(nums == 2):
         wigget.place(
-            x = 1000,
+            x = 975,
             y = 100
         )
     elif(nums == 3):
         wigget.place(
-            x = 1200,
+            x = 1150,
             y = 100
         )
     elif(nums == 4):
         wigget.place(
-            x = 800,
-            y = 275
+            x = 775,
+            y = 250
         )
     elif(nums == 5):
         wigget.place(
-            x = 1000,
-            y = 275
+            x = 975,
+            y = 250
         )
     elif(nums == 6):
         wigget.place(
-            x = 1200,
-            y = 275
+            x = 1150,
+            y = 250
         )
     elif(nums == 7):
         wigget.place(
             x = 800,
-            y = 450
+            y = 375
         )
     elif(nums == 8):
         wigget.place(
-            x = 1000,
-            y = 450
+            x = 975,
+            y = 375
         )
     elif(nums == 9):
         wigget.place(
-            x = 1200,
-            y = 450
+            x = 1150,
+            y = 375
         )
     else:
         print("fucking error 348")
